@@ -1,0 +1,621 @@
+body {
+    font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', 'sans-serif';
+    font-size: clamp(1rem, 1vw + 1rem, 1.25rem); 
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  
+}
+
+header, nav, footer {
+    background-color: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* link styles */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1{
+    font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+    color: #1e3a8a;
+}
+
+h1, h2 {
+    margin: 0.5em 0;
+    transition: color 0.3s;
+    
+    
+}
+
+
+h2 {
+    color: #1e3a8a;
+    background-color: white;
+    font-size: clamp(1.5rem, 2vw + 0.5rem, 2.5rem);
+}
+
+main {
+    padding: 1em;
+    margin-bottom: 2em;
+    
+}
+
+/* for nav --> grid lauyout */
+nav ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+    display: block;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    /* transition for hover */
+    transition: background-color 0.3s; 
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+
+
+
+
+/* table for team results */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 0.75em;
+    border: 1px solid #ddd;
+    text-align: left;
+    overflow: auto;
+}
+
+td{
+    color:black; 
+}
+
+th {
+    background-color: #1e3a8a;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1
+
+}
+
+/* alternating row color for table */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+    overflow: auto;
+}
+tr:nth-child(odd) {
+    background-color: #808080; 
+    overflow: auto;
+    
+}
+
+table:focus {
+    outline: 2px solid #1e3a8a; /* Adds a border around the table when focused */
+    outline-offset: 4px;
+    overflow: auto;
+    
+}
+
+/* race summary athlete profiles */
+
+.athlete{
+    margin-bottom: 15px;
+    position: relative;
+
+}
+
+.athlete input[type="checkbox"] {
+    display: none;
+}
+
+
+.athlete label {
+    font-size: 1.2em;
+    color: #1e3a8a;
+    
+    cursor: pointer;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.athlete .collapsible-content {
+    display: none;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.athlete input[type="checkbox"]:checked ~ .collapsible-content {
+    display: block;
+}
+
+.athlete figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    background-color: #1e3a8a;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+}
+
+.athlete:hover {
+    /* shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* animation */
+@keyframes scaleUp {
+    from { transform: scale(0.9); }
+    to { transform: scale(1); }
+}
+
+.athlete figure img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /*image will fit container*/
+    border: 2px solid #1e3a8a;
+    border-radius: 50%;
+    animation: fadeIn 0.8s ease-in-out, scaleUp 0.5s ease-in-out; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* athlete name part of bottom */
+.athlete figure figcaption {
+    font-size: 1.5em;  
+    font-weight: bold;
+    margin-top: 0.5em; 
+    text-align: center; 
+}
+
+.athlete figure img:hover {
+    transform: scale(1.1); /* enlarges the image on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* bigger shadow on hover */
+}
+
+.athlete dl {
+    display: grid;
+    grid-template-columns: auto 1fr; /* two columns for labels and values */
+    gap: 10px; 
+    margin-left: 20px; 
+    width: 100%; 
+    text-align: left;
+    font-size: 1.2em; 
+    padding: 10px;
+    
+}
+
+.athlete dt, .athlete dd {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-right: none; 
+    word-wrap: break-word;
+    text-align: center; 
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.athlete dt {
+    font-weight: bold;
+    text-align: right;
+    background-color: #f0f0f0; 
+    
+}
+
+.athlete dd {
+    background-color: #fff;
+    text-align: left;
+    margin: 0;
+    width: 100%; /* Ensure it uses full available space */
+}
+/* mobile view grid adjustments */
+@media (width: 400px) {
+    .athlete dl {
+        grid-template-columns: 1fr;
+    
+    }
+
+    .athlete dt, .athlete dd {
+        text-align: center;
+        width: 75%; 
+        
+    }
+}
+
+
+/* gallery*/
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* footer */
+footer {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* skip to main content link  */
+a[href="#main"] {
+    position: absolute;
+    left: 0;
+    background: #1e3a8a;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    z-index: 100;
+    transition: top 0.3s ease;
+}
+
+a[href="#main"]:focus {
+    top: 10px;
+}
+
+/* dark mode adjustments */
+:root {
+    --bg-color-high-contrast: #000000;
+    --text-color-high-contrast: #ffffff;
+    --link-color-high-contrast: #ffcc00;
+    --header-footer-bg-high-contrast: #000000;
+    --header-footer-text-high-contrast: #ffffff;
+    --table-border-high-contrast: #ffcc00;
+}
+
+/* high contrast adjustments */
+body[data-theme='high-contrast'] {
+    background-color: var(--bg-color-high-contrast);
+    color: var(--text-color-high-contrast);
+}
+
+body[data-theme='high-contrast'] header,
+body[data-theme='high-contrast'] nav,
+body[data-theme='high-contrast'] footer {
+    background-color: var(--header-footer-bg-high-contrast);
+    color: var(--header-footer-text-high-contrast);
+}
+
+body[data-theme='high-contrast'] a {
+    color: var(--link-color-high-contrast);
+}
+
+body[data-theme='high-contrast'] th,
+body[data-theme='high-contrast'] .athlete dt {
+    background-color: var(--header-footer-bg-high-contrast);
+    color: var(--header-footer-text-high-contrast);
+}
+
+body[data-theme='high-contrast'] th, 
+body[data-theme='high-contrast'] td {
+    border: 1px solid var(--table-border-high-contrast);
+}
+
+/*High-Contrast Styles for Buttons and Highlights */
+button, .highlight {
+    background-color: var(--link-color-high-contrast);
+    color: var(--text-color-high-contrast);
+}
+
+body[data-theme='dark'] {
+    --bg-color: #333;
+    --text-color: #f9f9f9;
+    --link-color: white;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+
+/* Keyframes for Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Keyframes for Slide-in Animation (from the right) */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/*ANIMATED SECTION TRANSITIONS */
+section {
+    opacity: 100; 
+    transition: opacity 0.5s ease, transform 0.5s ease; 
+}
+
+/* Fade-in Animation */
+section:target {
+    opacity: 1;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Slide-in Animation */
+#individual-results:target {
+    animation: slideIn 0.8s ease forwards;
+}
+
+
+
+
+
+
+/* Default Light Mode Styles */
+
+/* Dark Mode Styles Using the .dark-mode Class */
+body.dark-mode {
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode footer {
+    background-color: #1a1a1a;
+    color: #f9f9f9;
+}
+
+body.dark-mode nav ul li a {
+    background-color: #444;
+    color: #f9f9f9;
+}
+
+body.dark-mode table {
+    background-color: #444;
+    color: black;
+    border-color: #555;
+}
+
+body.dark-mode th {
+    background-color: #555;
+    color: #f9f9f9;
+}
+
+body.dark-mode .athlete figure {
+    background-color: #444;
+    color: #f9f9f9;
+    border-color: #555;
+}
+
+body.dark-mode .athlete figure img {
+    border-color: #555;
+}
+
+body.dark-mode .athlete label{
+    color:white; 
+}
+
+body.dark-mode dd, dt{
+    color:black; 
+}
+
+
+/* lightbox */
+
+/* Custom Lightbox Overlay Background */
+.lb-overlay {
+    background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+}
+
+/* Lightbox Image Container */
+.lb-image {
+    border: 4px solid #ffffff; /* White border around the image */
+    border-radius: 8px; /* Rounded corners for images */
+}
+
+/* Lightbox Caption */
+.lb-caption {
+    color: #ffffff; /* White text for captions */
+    font-size: 1.1rem; /* Caption font size */
+    text-align: center;
+    padding: 8px 10px;
+}
+
+/* Navigation Buttons */
+.lb-nav a.lb-prev, .lb-nav a.lb-next {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    color: #000000; /* Black arrow color */
+    border-radius: 50%; /* Rounded buttons */
+}
+
+/* Close Button */
+.lb-close {
+    color: #ffffff; /* White close button */
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .lb-image {
+        min-width: 95%;
+        min-height: 85%;
+    }
+}
+
+/* Custom Styling for Thumbnails (Optional) */
+.thumbnail {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%; /* Set the base font size to 100% */
+}
+
+body {
+    font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+    font-size: clamp(1rem, 1vw + 1rem, 1.25rem);
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal; /* Remove boldness */
+}
+
+/* Links */
+a {
+
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Lists */
+ul, ol {
+    list-style: none; /* Remove default list styling */
+}
+
+/* Tables */
+table {
+    border-collapse: collapse; /* Collapse borders */
+}
+
+/* Images */
+img {
+    width: 100%; /* Responsive images */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure proper line height in all elements */
+p, blockquote, figure, pre {
+    line-height: 1.6;
+}
+
+/* Remove default styles for buttons */
+button {
+    border: none; /* Remove default border */
+    background: none; /* Remove default background */
+    padding: 0; /* Remove default padding */
+    font: inherit; /* Inherit font properties */
+    color: inherit; /* Inherit text color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Remove default styles for input elements */
+input, textarea {
+    font-family: inherit; /* Inherit font properties */
+    font-size: inherit; /* Inherit font size */
+    color: inherit; /* Inherit text color */
+    border: none; /* Remove border */
+}
+
+/* Ensure that all sections have a consistent appearance */
+section {
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure headers are treated consistently */
+header, nav, footer {
+    background-color: #1e3a8a; /* Consistent background */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    padding: 1em 0; /* Consistent padding */
+}
+
+/* Set a margin for the footer */
+footer {
+    margin-top: 2em; /* Margin at the top of footer */
+}
